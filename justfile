@@ -61,3 +61,17 @@ deploy:
     --broadcast \
     --with-gas-price 25000000000 \
     -vvvv
+
+add-whitelists filename:
+    #!/bin/sh
+
+    forge script "script/Whitelist.s.sol" \
+    --rpc-url $RPC_NODE_URL \
+    --sender $SENDER_ADDRESS \
+    --keystores $KEYSTORE_PATH \
+    --slow \
+    --broadcast \
+    --with-gas-price 25000000000 \
+    --sig "addWhitelistSpots(string)" \
+    -vvvvv \
+    -- {{filename}}
